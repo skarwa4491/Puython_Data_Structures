@@ -1,0 +1,5 @@
+[
+  "test_ordering.py::test_foo", 
+  "test_ordering.py::test_bar", 
+  "test_ordering.py::test_disp"
+]
