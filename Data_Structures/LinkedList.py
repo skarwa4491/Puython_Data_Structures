@@ -1,3 +1,5 @@
+from prompt_toolkit.application import current
+
 class Node():
     def __init__(self,data):
         self.data=data
@@ -80,11 +82,52 @@ class linkedList():
         prev_node.next=current_node.next
         current_node=None
 
+    def len(self):
+        count=1
+        current_node=self.head
+        if(current_node.next==None):
+            return 1
+        while(current_node and current_node.next!=None):
+            current_node=current_node.next
+            count+=1
+
+            if(current_node.next==None):
+                break
+        return count
+
+    def node_swap(self,key1,key2):
+        prev_1=None
+        curr_1=self.head
+
+        if (key1==key2):
+            print("values cannot be swapped as both are same")
+
+        while(curr_1 and curr_1.data!=key1):
+            prev_1=curr_1
+            curr_1=curr_1.next
 
 
+        print(prev_1.data,curr_1.data)
+        curr_2=self.head
+        prev_2=None
 
+        while (curr_2 and curr_2.data != key2):
+            prev_2 = curr_2
+            curr_2 = curr_2.next
+        print(prev_2.data,curr_2.data)
 
+        if(prev_1):
+            prev_1.next=curr_2
+        else:
+            self.head=curr_2
+        if(prev_2):
+            prev_2.next=curr_1
+        else:
+            self.head=curr_1
 
+        print(curr_1.data,curr_2.data,prev_1.data,prev_2.data)
+
+        curr_1.next,curr_2.next=curr_2.next,curr_1.next
 
 
 
@@ -105,5 +148,9 @@ llist.deleteNode("F")
 print("************After Deteling _node*************")
 llist.printList()
 print("************After Deteling_node_by_index*************")
-llist.delete_node_at_index(1)
+llist.delete_node_at_index(2)
+llist.printList()
+print(llist.len())
+llist.node_swap("B","C")
+print("************After swapping*************")
 llist.printList()
