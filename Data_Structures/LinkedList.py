@@ -59,6 +59,30 @@ class linkedList():
 
         previous_node.next=current_node.next
 
+    def delete_node_at_index(self,index):
+        current_node = self.head
+        if(index==0):
+            self.head = current_node.next
+            return
+
+        count=1
+        prev_node=current_node
+        current_node=current_node.next
+        while(current_node and count!=index):
+            prev_node=current_node
+            current_node=current_node.next
+            count+=1
+
+        if current_node is None:
+            print("provided index to be deleted is not present in list")
+            return
+
+        prev_node.next=current_node.next
+        current_node=None
+
+
+
+
 
 
 
@@ -75,6 +99,11 @@ llist.append("C")
 llist.append("D")
 llist.prepend("F")
 llist.insert_at("E","B")
+print("************Before Deteling _node*************")
 llist.printList()
-print("*************************")
+llist.deleteNode("F")
+print("************After Deteling _node*************")
+llist.printList()
+print("************After Deteling_node_by_index*************")
+llist.delete_node_at_index(1)
 llist.printList()
